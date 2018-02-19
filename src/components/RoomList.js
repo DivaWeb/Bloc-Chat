@@ -20,7 +20,7 @@ class RoomList extends React.Component {
   }
 
   render(){
-    return
+    return(
 <div>
       {this.state.rooms.map((room) => {
         return room;
@@ -28,7 +28,7 @@ class RoomList extends React.Component {
 
     <h1> {this.state.rooms}</h1>
     </div>
-
+  );
   }
 }
 
