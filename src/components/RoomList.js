@@ -25,7 +25,7 @@ class RoomList extends React.Component {
     return(
 <div>
        {this.state.rooms.map((room) => {
-         return room ;
+         return room.name ;
        })}
 
 </div>
