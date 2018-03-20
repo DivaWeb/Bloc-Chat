@@ -39,10 +39,13 @@ class RoomList extends React.Component {
     return(
 
   <div>
+<ul>
+  {this.state.rooms.map((room) =>
+      <li key = {room.key} onClick={(e) => this.props.setRoom(room) }>{room.name}</li>
+  )}
 
-  {this.state.rooms.map((room) => {
-         return room.name ;
-       })}
+</ul>
+
 
   <form onSubmit = { (e) => this.createRoom(e) }>
     <input type="text" placeholder="New Room Name" value = { this.state.newRoomName } onChange={ (e) => this.handleChange(e) }/>
