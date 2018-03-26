@@ -63,7 +63,7 @@ class MessageList extends React.Component {
      <ul>
 
      { this.state.displayedMessages.map((message) =>
-        <li key = {message.key}>{message.Content}</li>
+        <li key = {message.key}>{message.Content}{message.username}</li>
       )}
       </ul>
     </div>
