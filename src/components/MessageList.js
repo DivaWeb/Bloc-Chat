@@ -43,7 +43,7 @@ class MessageList extends React.Component {
 
   updateDisplayedMessages(activeRoom) {
     if(!activeRoom) { return }
-    this.setState({ displayedMessages: this.state.messages.filter( message => message.roomId === activeRoom.key )})
+    this.setState({ displayedMessages: this.state.messages.filter( message => message.key === activeRoom.key )})
   }
 
   checkForNewMessages(){
@@ -62,7 +62,7 @@ class MessageList extends React.Component {
      <div>
      <ul>
 
-     { this.state.messages.map((message) =>
+     { this.state.displayedMessages.map((message) =>
         <li key = {message.key}>{message.Content}</li>
       )}
       </ul>
