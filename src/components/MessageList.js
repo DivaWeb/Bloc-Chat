@@ -26,12 +26,12 @@ class MessageList extends React.Component {
    }
 
   createMessage(newMessageText) {
-    newMessageText.preventDefault();
+
     this.messagesRef.push({
-      username: this.props.user ,
       Content: newMessageText,
-      sentAt: Date.now(),
-      roomId: this.props.activeRoom.key
+      sendAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+      roomId: this.props.activeRoom.key,
+      username: this.props.user
     });
     this.setState({ newMessageText: '' });
   }
@@ -60,12 +60,23 @@ class MessageList extends React.Component {
    render(){
      return(
      <div>
+       <h2 > { this.props.activeRoom ? this.props.activeRoom.name : ''}</h2>
      <ul>
 
      { this.state.displayedMessages.map((message) =>
-        <li key = {message.key}>{message.Content}{message.username}</li>
+        <li key = {message.key}>
+          <div>{message.Content}</div>
+          <div>{message.username}</div>
+          <div> {message.sendAt}</div>
+
+        </li>
       )}
       </ul>
+
+      <form>
+      <input type="text" placeholder = "Type your message here"   onChange = { (e) => this.handleChange.bind(this) } />
+      <input type = "button" value = "Enter" onClick = { (e) => this.createMessage()} />
+      </form>
     </div>
   );
    }

@@ -23,6 +23,7 @@ class RoomList extends React.Component {
   }
 
   handleChange(e){
+    e.preventDefault();
     this.setState({ newRoomName: e.target.value})
   }
 
