@@ -25,29 +25,33 @@ class MessageList extends React.Component {
      this.updateDisplayedMessages( nextProps.activeRoom );
    }
 
-  createMessage(newMessageText) {
+  createMessage(e) {
   //  if(!this.props.activeRoom || !newMessageText) { return }
-  console.log(this.props.user);
+  e.preventDefault();
+  console.log(this.props.activeRoom);
     this.messagesRef.push({
-      Content: newMessageText,
+      Content: this.state.newMessageText,
       sendAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: this.props.activeRoom.key,
-      username: this.props.users.displayName
+      username: this.props.user ? this.props.user.displayName : 'Guest'
 
     });
+
+
     this.setState({ newMessageText: '' });
+    this.updateDisplayedMessages(this.props.activeRoom);
 
   }
 
+
   handleChange(e) {
-    e.preventDefault();
     this.setState({newMessageText: e.target.value});
-  
+
   }
 
   updateDisplayedMessages(activeRoom) {
     if(!activeRoom) { return }
-    this.setState({ displayedMessages: this.state.messages.filter( message => message.key === activeRoom.key )})
+    this.setState({ displayedMessages: this.state.messages.filter( message => {console.log(message.key, activeRoom.key); message.key === activeRoom.key })})
   }
 
   checkForNewMessages(){
@@ -78,8 +82,8 @@ class MessageList extends React.Component {
       </ul>
 
       <form>
-      <input type="text" placeholder = "Type your message here"   onChange = { (e) => this.handleChange.bind(this) } />
-      <input type = "button" value = "Enter" onClick = { (e) => this.createMessage()} />
+      <input type="text" placeholder = "Type your message here"   value = {this.state.newMessageText} onChange = {  this.handleChange.bind(this) } />
+      <input type = "button" value = "Enter" onClick = { (e) => this.createMessage(e)} />
       </form>
     </div>
   );
