@@ -26,19 +26,23 @@ class MessageList extends React.Component {
    }
 
   createMessage(newMessageText) {
-
+  //  if(!this.props.activeRoom || !newMessageText) { return }
+  console.log(this.props.user);
     this.messagesRef.push({
       Content: newMessageText,
       sendAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       roomId: this.props.activeRoom.key,
-      username: this.props.user
+      username: this.props.users.displayName
+
     });
     this.setState({ newMessageText: '' });
+
   }
 
   handleChange(e) {
     e.preventDefault();
     this.setState({newMessageText: e.target.value});
+  
   }
 
   updateDisplayedMessages(activeRoom) {
