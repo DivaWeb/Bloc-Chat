@@ -1,4 +1,7 @@
 import React from 'react';
+import '.css/messagelist.css';
+
+
 
 
 class MessageList extends React.Component {
@@ -13,6 +16,8 @@ class MessageList extends React.Component {
 
    }
 
+
+
   componentDidMount(){
      this.messagesRef.on( 'child_added', snapshot => {
        const message = snapshot.val();
@@ -25,12 +30,8 @@ class MessageList extends React.Component {
      this.updateDisplayedMessages( nextProps.activeRoom );
    }
 
-   /*const timeRef = firebase.database().ref("sessions"),
-   timeRef.push({startedAt: firebase.database.ServerValue.TIMESTAMP});*/
-  
 
-
-  createMessage(e) {+
+  createMessage(e) {
   e.preventDefault();
     this.messagesRef.push({
       Content: this.state.newMessageText,
@@ -61,6 +62,10 @@ updateDisplayedMessages( activeRoom ) {
     });
   }
 
+   time(timestamp){
+     const date = new Date(timestamp);
+     return date.toLocaleTimeString() ;
+   }
 
 
    render(){
@@ -71,11 +76,11 @@ updateDisplayedMessages( activeRoom ) {
 
      { this.state.displayedMessages.map(  ( message ) =>
         <li key = { message.key } >
-          <div> { message.Content } </div>
+          <div className = "message"> { message.Content } </div>
 
-          <div> { message.username } </div>
+          <div className = "user"> { message.username } </div>
 
-          <div span = "span" format = "MM/DD/YY hh:mm "> { message.sendAt / 1000 } </div>
+          <div className = "sent">{ this.time(message.sendAt)} </div>
 
         </li>
       )}
