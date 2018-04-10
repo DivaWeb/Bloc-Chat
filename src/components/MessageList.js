@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/messagelist.css'
+import 'src/css/messagelist.css';
 
 class MessageList extends React.Component {
   constructor(props){
@@ -25,12 +25,11 @@ class MessageList extends React.Component {
      this.updateDisplayedMessages( nextProps.activeRoom );
    }
 
-   /*const timeRef = firebase.database().ref("sessions"),
-   timeRef.push({startedAt: firebase.database.ServerValue.TIMESTAMP});*/
 
 
 
-  createMessage(e) {+
+
+  createMessage(e) {
   e.preventDefault();
     this.messagesRef.push({
       Content: this.state.newMessageText,
