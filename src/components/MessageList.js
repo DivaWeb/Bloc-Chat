@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './css/messagelist.css'
 
 class MessageList extends React.Component {
   constructor(props){
@@ -27,7 +27,7 @@ class MessageList extends React.Component {
 
    /*const timeRef = firebase.database().ref("sessions"),
    timeRef.push({startedAt: firebase.database.ServerValue.TIMESTAMP});*/
-  
+
 
 
   createMessage(e) {+
