@@ -1,1 +1,20 @@
+.user{
+  color: red;
+  text-decoration: none;
 
+}
+.sent{
+  list-style: none;
+}
+
+.message{
+  text-decoration: none;
+}
+
+.messageDisplay{
+  list-style: none;
+}
+
+.messageList{
+  
+}

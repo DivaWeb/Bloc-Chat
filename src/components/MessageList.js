@@ -1,5 +1,5 @@
 import React from 'react';
-import '.css/messagelist.css';
+import '../css/messagelist.css';
 
 
 
@@ -70,9 +70,9 @@ updateDisplayedMessages( activeRoom ) {
 
    render(){
      return(
-     <div>
+     <div className = "messageList">
        <h2> { this.props.activeRoom ? this.props.activeRoom.name : '' } </h2>
-     <ul>
+     <ul className = "messageDisplay">
 
      { this.state.displayedMessages.map(  ( message ) =>
         <li key = { message.key } >
