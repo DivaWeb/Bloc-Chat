@@ -1,0 +1,39 @@
+.roomList{
+list-style-type: none;
+}
+
+.rooms{
+  list-style: none;
+  padding-left: 0px;
+
+}
+
+.roomList{
+font-size: 1.5em;
+}
+
+.roomsHeader{
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+}
+
+.headerTitle{
+  font-family: sans-serif;
+  color: purple;
+}
+
+.roomSection{
+background-color: lightblue;
+height: 100vh;
+float: left;
+margin-right: 0px;
+
+}
+
+.newRoom{
+
+}

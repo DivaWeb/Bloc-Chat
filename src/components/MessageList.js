@@ -1,5 +1,11 @@
 import React from 'react';
 import '../css/messagelist.css';
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> messages
 
 class MessageList extends React.Component {
   constructor(props){
@@ -12,6 +18,8 @@ class MessageList extends React.Component {
      this.messagesRef = this.props.firebase.database().ref('messages');
 
    }
+
+
 
   componentDidMount(){
      this.messagesRef.on( 'child_added', snapshot => {
@@ -60,21 +68,25 @@ updateDisplayedMessages( activeRoom ) {
     });
   }
 
+   time(timestamp){
+     const date = new Date(timestamp);
+     return date.toLocaleTimeString() ;
+   }
 
 
    render(){
      return(
-     <div>
+     <div className = "messageList">
        <h2> { this.props.activeRoom ? this.props.activeRoom.name : '' } </h2>
-     <ul>
+     <ul className = "messageDisplay">
 
      { this.state.displayedMessages.map(  ( message ) =>
         <li key = { message.key } >
-          <div> { message.Content } </div>
+          <div className = "message"> { message.Content } </div>
 
-          <div> { message.username } </div>
+          <div className = "user"> { message.username } </div>
 
-          <div span = "span" format = "MM/DD/YY hh:mm "> { message.sendAt / 1000 } </div>
+          <div className = "sent">{ this.time(message.sendAt)} </div>
 
         </li>
       )}
