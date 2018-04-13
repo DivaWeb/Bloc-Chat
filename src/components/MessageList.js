@@ -1,11 +1,6 @@
 import React from 'react';
 import '../css/messagelist.css';
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> messages
 
 class MessageList extends React.Component {
   constructor(props){
